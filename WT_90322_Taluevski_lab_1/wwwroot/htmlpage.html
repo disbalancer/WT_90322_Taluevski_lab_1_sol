@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="lib/font-awesome/css/all.css" rel="stylesheet"/>
+    <link href="css/site.css" rel="stylesheet"/>
+
+
+</head>
+<body>
+
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+    <header>
+        <div class="container">
+            <!-- Панель навигаии-->
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+                <!--Меню сайта-->
+                <a class="navbar-brand" href="#">WT_90322_Taluevski_lab_1</a>
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Lab 1</a>
+                    <a class="nav-item nav-link" href="#">Catalog</a>
+                    <a class="nav-item nav-link" href="#">Administration</a>
+                </div>
+                <!--Меню сайта - конец-->
+                <!--Информация пользователя-->
+                <a href="#" class="navbar-text ml-auto">
+                    00,0 руб <i class="fas fa-shopping-cart nav-color"></i>(0)
+                </a>
+
+                <div class="dropdown m1-4 nav-color">
+                    <div class="dropdown-toggle" id="dropdownMenuButton"
+                         data-toggle="dropdown" aria-haspopup="true"
+                         aria-expanded="false" >
+                    <img src="images/avatar.jpg" width="30"
+                         alt="User" class="rounded" />
+                    </div>
+                    <div class="dropdown-menu"
+                         aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-item-text">
+                            <img src="images/avatar.jpg" width="50"
+                                 alt="User" class="rounded" />
+                            user@mail.ru
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">My Goods</a>
+                        <a class="dropdown-item" href="#">Log out</a>
+                    </div>
+                </div>
+        <!--Информация пользователя - конец-->
+        </nav>
+
+        <!--<span class="nav-color">Заголовок страницы</span>-->
+        </div>
+    </header>
+
+    <main class="container">
+        <!--Содержимое страницы-->
+        <form>
+            <div class="form-group row">
+
+                    <label for="lab" class="col-sm-3 col-form-label font-weight-bold">Лабораторная работа №1</label>
+
+            </div>
+            <div class="form-group row">
+                <div class="navbar-text">
+                    <label for="list" class="col-sm-3 col-form-label font-weight-bold">Список</label>
+                    <ol type="A">
+                        <li>элемент 1 списка</li>
+                        <li>элемент 2 списка</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Форма</legend>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                        <label class="form-check-label" for="gridCheck1">
+                            Чек-бокс 1
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck1">
+                        <label class="form-check-label" for="gridCheck1">
+                            Чек-бокс 2
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <fieldset class="form-group">
+                <div class="col-sm-9">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1">
+                        <label class="form-check-label col-sm-2" for="gridRadios1">
+                            Радио-1
+                        </label>
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                        <label class="form-check-label col-sm-2" for="gridRadios2">
+                            Радио-2
+                        </label>
+                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                        <label class="form-check-label col-sm-2" for="gridRadios2">
+                            Радио-3
+                        </label>
+                    </div>
+
+                </div>
+            </fieldset>
+
+
+            <div class="form-group row">
+                <label for="inputLogin" class="col-sm-2 col-form-label">Login</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="login" placeholder="Введите имя">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Введите пароль">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="button" class="btn btn-primary">Отправить</button>
+                </div>
+            </div>
+
+        </form>
+
+
+    </main>
+
+    <footer class="fixed-bottom">
+        <div class="container">
+            <!--<span class="nav-color">Подвал страницы</span>-->
+            <div class="navbar navbar-dark navbar-expand-md bg-dark">
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-item nav-link" href="http://www.facebook.com">
+                        <i class="fab fa-facebook-f fa-2x"></i>
+                    </a>
+                    <a class="nav-item nav-link" href="http://www.vk.com">
+                        <i class="fab fa-vk fa-2x"></i>
+                    </a>
+                    <a class="nav-item nav-link" href="http://www.twitter.com">
+                        <i class="fab fa-twitter fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
