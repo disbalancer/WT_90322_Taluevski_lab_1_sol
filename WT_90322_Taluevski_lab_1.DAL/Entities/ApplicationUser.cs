@@ -8,5 +8,6 @@ namespace WT_90322_Taluevski_lab_1.DAL.Entities
 {
     public class ApplicationUser : IdentityUser
     {
+        public byte[] AvatarImage { get; set; }
     }
 }
