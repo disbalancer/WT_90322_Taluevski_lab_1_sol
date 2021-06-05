@@ -11,7 +11,7 @@ namespace WT_90322_Taluevski_lab_1.DAL.Entities
         public int CarId { get; set; } // id авто
         public string CarName { get; set; } // название авто
         public string Description { get; set; } // описание авто
-        public int HorsePower { get; set; } // лошадиные силы
+        public int HorsePower { get; set; } // цена
         public string Image { get; set; } // имя файла изображения
 
         // Навигационные свойства

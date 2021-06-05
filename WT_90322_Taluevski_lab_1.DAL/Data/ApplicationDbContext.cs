@@ -11,5 +11,8 @@ namespace WT_90322_Taluevski_lab_1.DAL.Data
         : base(options)
         {
         }
+
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<CarGroup> CarGroups { get; set; }
     }
 }

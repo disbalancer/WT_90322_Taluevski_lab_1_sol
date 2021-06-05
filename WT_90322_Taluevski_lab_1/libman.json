@@ -10,6 +10,10 @@
       "provider": "jsdelivr",
       "library": "bs-custom-file-input@1.3.4",
       "destination": "wwwroot/lib/bs-custom-file-input/"
+    },
+    {
+      "library": "bs-custom-file-input@1.3.4",
+      "destination": "wwwroot/js/bs-custom-file-input/"
     }
   ]
 }

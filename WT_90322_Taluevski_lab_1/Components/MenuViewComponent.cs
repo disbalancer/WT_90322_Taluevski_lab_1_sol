@@ -14,7 +14,7 @@ namespace WT_90322_Taluevski_lab_1.Components
         {
             new MenuItem{Controller="Home", Action="Index", Text="Lab2"},
             new MenuItem{Controller="Product", Action="Index", Text="Каталог"},
-            new MenuItem{Controller="Admin", Action="/Index", Text="Администрирование"}
+            new MenuItem{Controller="Admin", Action="Index", Text="Администрирование"}
         };
 
         public IViewComponentResult Invoke()
