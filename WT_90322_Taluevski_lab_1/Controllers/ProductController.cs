@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WT_90322_Taluevski_lab_1.DAL.Entities;
+using WT_90322_Taluevski_lab_1.Extensions;
 using WT_90322_Taluevski_lab_1.Models;
 
 namespace WT_90322_Taluevski_lab_1.Controllers
@@ -21,21 +22,8 @@ namespace WT_90322_Taluevski_lab_1.Controllers
             SetupData();
         }
 
-
-        //public IActionResult Index(int pageNo=1)
-        //{
-        //    var items = _cars
-        //                    .Skip((pageNo - 1) * _pageSize)
-        //                    .Take(_pageSize)
-        //                    .ToList();
-        //    return View(items);
-        //}
-
-        // for tests
-        //public IActionResult Index(int pageNo = 1)
-        //{
-        //    return View(ListViewModel<Car>.GetModel(_cars, pageNo, _pageSize));
-        //}
+        [Route("Catalog")]
+        [Route("Catalog/Page_{pageNo}")]
         public IActionResult Index(int? group, int pageNo = 1)
         {
 
@@ -47,7 +35,17 @@ namespace WT_90322_Taluevski_lab_1.Controllers
             // Получить id текущей группы и поместить в TempData
             ViewData["CurrentGroup"] = group ?? 0;
 
-            return View(ListViewModel<Car>.GetModel(carsFiltered, pageNo, _pageSize));
+            var model = ListViewModel<Car>.GetModel(carsFiltered, pageNo, _pageSize);
+            //if (Request.Headers["x-requested-with"]
+            //                                        .ToString()
+            //                                        .ToLower()
+            //                                        .Equals("xmlhttprequest"))
+            if (Request.IsAjaxRequest())
+                return PartialView("_listpartial", model);
+            else
+                return View(model);
+
+
 
         }
 

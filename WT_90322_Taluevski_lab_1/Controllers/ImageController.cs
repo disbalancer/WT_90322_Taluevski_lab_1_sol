@@ -14,7 +14,7 @@ namespace WT_90322_Taluevski_lab_1.Controllers
         UserManager<ApplicationUser> _userManager;
         IWebHostEnvironment _env;
         public ImageController(UserManager<ApplicationUser>
-       userManager, IWebHostEnvironment env)
+                                userManager, IWebHostEnvironment env)
         {
             _userManager = userManager;
             _env = env;
