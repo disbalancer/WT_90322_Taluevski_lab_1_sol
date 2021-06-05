@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WT_90322_Taluevski_lab_1.DAL.Entities;
+using WT_90322_Taluevski_lab_1.Models;
 
 namespace WT_90322_Taluevski_lab_1.Controllers
 {
@@ -21,14 +22,35 @@ namespace WT_90322_Taluevski_lab_1.Controllers
         }
 
 
-        public IActionResult Index(int pageNo=1)
+        //public IActionResult Index(int pageNo=1)
+        //{
+        //    var items = _cars
+        //                    .Skip((pageNo - 1) * _pageSize)
+        //                    .Take(_pageSize)
+        //                    .ToList();
+        //    return View(items);
+        //}
+
+        // for tests
+        //public IActionResult Index(int pageNo = 1)
+        //{
+        //    return View(ListViewModel<Car>.GetModel(_cars, pageNo, _pageSize));
+        //}
+        public IActionResult Index(int? group, int pageNo = 1)
         {
-            var items = _cars
-                            .Skip((pageNo - 1) * _pageSize)
-                            .Take(_pageSize)
-                            .ToList();
-            return View(items);
+
+            var carsFiltered = _cars
+                        .Where(d => !group.HasValue || d.CarGroupId == group.Value);
+
+            // Поместить список групп во ViewData
+            ViewData["Groups"] = _carGroups;
+            // Получить id текущей группы и поместить в TempData
+            ViewData["CurrentGroup"] = group ?? 0;
+
+            return View(ListViewModel<Car>.GetModel(carsFiltered, pageNo, _pageSize));
+
         }
+
 
         /// <summary>
         /// Инициализация списков
@@ -67,7 +89,7 @@ namespace WT_90322_Taluevski_lab_1.Controllers
             HorsePower =27, CarGroupId=1, Image="zaz_968.jpg" },
             new Car { CarId = 8, CarName="Kawasaki Ninja 650",
             Description="Новая легковесная решетчатая рама Trellis, двухцилиндровый двигатель с жидкостным охлаждением. Идеальное сочетание спортивного исполнения и городской практичности.",
-            HorsePower =68, CarGroupId=1, Image="kawasaki.jpg" },
+            HorsePower =68, CarGroupId=3, Image="kawasaki.jpg" },
             new Car { CarId = 9, CarName="MAN TGX D38",
             Description="Вас ничто не остановит MAN TGX D38 поможет справиться с задачей любой сложности. Наш мощный автомобиль с многосильным двигателем может принять и перевезти груз до 120 тонн и способен преодолеть крутые склоны за счет тягового усилия. Высокая тормозная мощность тормозов-замедлителей гарантирует безопасный спуск.",
             HorsePower =640, CarGroupId=2, Image="man.jpg" },
