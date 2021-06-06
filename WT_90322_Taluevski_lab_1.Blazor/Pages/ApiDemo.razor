@@ -1,0 +1,34 @@
+﻿
+
+
+@page "/apidemo"
+@inject HttpClient client
+
+<div class="container">
+    <CarsList @bind-Cars="cars"
+              SelectedObjectChanged="ShowDetails"></CarsList>
+    <CarDetails @bind-Car="Car"></CarDetails>
+</div>
+
+@code {
+    [Parameter]
+    public IEnumerable<ListViewModel> cars { get; set; }
+
+    string apiBaseAddress = "https://localhost:44321/Api/Cars";
+    protected override async Task OnInitializedAsync()
+    {
+        cars = await client.GetFromJsonAsync<IEnumerable<ListViewModel>>(apiBaseAddress);
+    }
+
+    [Parameter]
+    public DetailsViewModel Car { get; set; }
+    private async Task ShowDetails(int id)
+    {
+        Car =
+        await
+       client.GetFromJsonAsync<DetailsViewModel>(apiBaseAddress + $"/{id}");
+    }
+
+
+}
+

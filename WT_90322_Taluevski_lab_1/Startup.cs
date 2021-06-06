@@ -9,12 +9,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using Microsoft.Net.Http.Headers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WT_90322_Taluevski_lab_1.DAL.Data;
 using WT_90322_Taluevski_lab_1.DAL.Entities;
+using WT_90322_Taluevski_lab_1.Extensions;
 using WT_90322_Taluevski_lab_1.Models;
 using WT_90322_Taluevski_lab_1.Services;
 
@@ -32,6 +35,20 @@ namespace WT_90322_Taluevski_lab_1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            //services.AddCors(cfg =>
+            //{
+            //    cfg.AddDefaultPolicy(policy =>
+            //    {
+            //        policy.WithOrigins(Configuration.GetSection("ConnectionStrings").Get<string[]>())
+            //        .AllowAnyHeader()
+            //        .AllowAnyMethod()
+            //        .AllowCredentials()
+            //        .SetIsOriginAllowed((_) => true)
+            //        .SetIsOriginAllowedToAllowWildcardSubdomains();
+            //    });
+            //});
+
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
@@ -56,6 +73,7 @@ namespace WT_90322_Taluevski_lab_1
             
             // 8 lab
             services.AddDistributedMemoryCache();
+
             services.AddSession(opt =>
             {
                 opt.Cookie.HttpOnly = true;
@@ -75,8 +93,13 @@ namespace WT_90322_Taluevski_lab_1
                                 IWebHostEnvironment env,
                                 ApplicationDbContext context,
                                 UserManager<ApplicationUser> userManager,
-                                RoleManager<IdentityRole> roleManager)
+                                RoleManager<IdentityRole> roleManager,
+                                ILoggerFactory logger)
         {
+
+
+
+            logger.AddFile("Logs/log-{Date}.txt");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -110,6 +133,17 @@ namespace WT_90322_Taluevski_lab_1
             DbInitializer.Seed(context, userManager, roleManager)
              .GetAwaiter()
              .GetResult();
+
+            // lab 8
+            app.UseLogging();
+
+            app.UseCors(policy =>
+                             policy.AllowAnyOrigin()
+                             .AllowAnyMethod()
+                             .WithHeaders(HeaderNames.ContentType));
+
+            app.UseCors();
+
 
         }
     }
