@@ -97,8 +97,11 @@ namespace WT_90322_Taluevski_lab_1
                                 ILoggerFactory logger)
         {
 
+            app.UseCors(policy => policy.AllowAnyOrigin()
+                             .AllowAnyMethod()
+                             .WithHeaders(HeaderNames.ContentType));
 
-
+            app.UseLogging();
             logger.AddFile("Logs/log-{Date}.txt");
             if (env.IsDevelopment())
             {
@@ -135,14 +138,11 @@ namespace WT_90322_Taluevski_lab_1
              .GetResult();
 
             // lab 8
-            app.UseLogging();
 
-            app.UseCors(policy =>
-                             policy.AllowAnyOrigin()
-                             .AllowAnyMethod()
-                             .WithHeaders(HeaderNames.ContentType));
 
-            app.UseCors();
+
+
+
 
 
         }

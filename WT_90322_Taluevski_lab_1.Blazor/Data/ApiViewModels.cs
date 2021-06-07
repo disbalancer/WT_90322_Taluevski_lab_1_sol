@@ -19,7 +19,7 @@ namespace WT_90322_Taluevski_lab_1.Blazor.Data
         public string CarName { get; set; } // название ТС
         [JsonPropertyName("description")]
         public string Description { get; set; } // описание ТС
-        [JsonPropertyName("price")]
+        [JsonPropertyName("horsePower")]
         public int HorsePower { get; set; } // цена ТС
         [JsonPropertyName("image")]
         public string Image { get; set; } // имя файла изображения
