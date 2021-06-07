@@ -19,19 +19,16 @@
                 <span asp-validation-for="Car.CarName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Car.Description" class="control-label"></label>
+                <label asp-for="Car.Description" class="control-label" ></label>
                 <input asp-for="Car.Description" class="form-control" />
                 <span asp-validation-for="Car.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Car.HorsePower" class="control-label"></label>
+                <label asp-for="Car.HorsePower" class="control-label"> Price</label>
                 <input asp-for="Car.HorsePower" class="form-control" />
                 <span asp-validation-for="Car.HorsePower" class="text-danger"></span>
             </div>
             <div class="form-group">
-                @*<label asp-for="Car.Image" class="control-label"></label>
-        <input asp-for="Car.Image" class="form-control" />
-        <span asp-validation-for="Car.Image" class="text-danger"></span>*@
                 <div class="custom-file mt-3">
                     <input type="file" asp-for="Car.Image"
                            class="custom-file-input" id="customFile">
@@ -55,7 +52,6 @@
 </div>
 
 @section Scripts{
-    @*<script src="~/js/bs-custom-file-input.js"></script>*@
     <script src="~/lib/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
 
     <script>
